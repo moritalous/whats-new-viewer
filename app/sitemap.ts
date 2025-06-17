@@ -22,7 +22,29 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 }
       url: baseUrl,
-      lastModified: new Date(),
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://aws-whats-new.example.com';
+  const lastModified = new Date(); // Create a single date object
+  
+  return [
+    {
+      url: baseUrl,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 1,
+    },
+    {
+      url: `${baseUrl}/en`,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
+    {
+      url: `${baseUrl}/ja`,
+      lastModified,
+      changeFrequency: 'daily',
+      priority: 0.8,
+    },
       changeFrequency: 'daily',
       priority: 1,
     },
