@@ -53,7 +53,13 @@ const imageUrl = ogImage || `${baseUrl}/og-image.png`;
     <Head>
     '@context': 'https://schema.org',
     '@type': 'WebPage',
-    name: title,
+const defaultStructuredData = structuredData || {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title || 'Default Title',
+    description: description || 'Default Description',
+    url: currentUrl,
+  };
     description: description,
     url: currentUrl,
   };
