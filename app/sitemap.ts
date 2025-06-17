@@ -4,7 +4,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://aws-whats-new.example.com';
   
   return [
-    {
+export default function sitemap(): MetadataRoute.Sitemap {
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'https://aws-whats-new.example.com';
+  
+  const createSitemapEntry = (path: string, priority: number) => ({
+    url: `${baseUrl}${path}`,
+    lastModified: new Date(),
+    changeFrequency: 'daily',
+    priority,
+  });
+
+  return [
+    createSitemapEntry('', 1),
+    createSitemapEntry('/en', 0.8),
+    createSitemapEntry('/ja', 0.8),
+    // Add more URLs as needed
+  ];
+}
       url: baseUrl,
       lastModified: new Date(),
       changeFrequency: 'daily',
