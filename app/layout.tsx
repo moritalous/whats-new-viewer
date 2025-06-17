@@ -92,7 +92,28 @@ export default function RootLayout({
     <html lang="en">
       <head>
         {/* Add structured data for better search engine understanding */}
-        <script
+alternates: {
+    canonical: baseUrl,
+  },
+};
+
+// Import the StructuredData component
+import StructuredData from './components/StructuredData';
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en">
+      <head>
+        <StructuredData />
+      </head>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <GoogleAnalytics />
+        {children}
+      </body>
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
