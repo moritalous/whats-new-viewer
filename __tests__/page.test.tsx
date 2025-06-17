@@ -95,4 +95,15 @@ describe('Home Page', () => {
       expect(screen.getByText('Latest AWS Updates')).toBeInTheDocument();
     });
   });
+
+  it('should render GitHub link', async () => {
+    render(<Home />);
+
+    await waitFor(() => {
+      const githubLink = screen.getByText('GitHub');
+      expect(githubLink).toBeInTheDocument();
+      expect(githubLink.closest('a')).toHaveAttribute('href', 'https://github.com/moritalous/whats-new-viewer');
+      expect(githubLink.closest('a')).toHaveAttribute('target', '_blank');
+    });
+  });
 });

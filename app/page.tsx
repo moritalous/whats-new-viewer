@@ -10,6 +10,7 @@ import {
   Button,
   Alert,
   Spinner,
+  Link,
 } from '@cloudscape-design/components';
 
 // Types and constants
@@ -82,6 +83,13 @@ function HomeContent() {
                   <Button variant="primary" onClick={refetch} loading={loading}>
                     {currentTexts.refreshButton}
                   </Button>
+                  <Link
+                    href="https://github.com/moritalous/whats-new-viewer"
+                    external
+                    variant="primary"
+                  >
+                    GitHub
+                  </Link>
                 </SpaceBetween>
               }
             >
