@@ -75,12 +75,25 @@ function HomeContent() {
               variant="h1"
               actions={
                 <SpaceBetween direction="horizontal" size="s">
+                  <Button 
+                    variant="normal" 
+                    onClick={refetch} 
+                    loading={loading}
+                    iconName="refresh"
+                    ariaLabel={currentTexts.refreshButton}
+                  />
                   <LanguageSelector
                     language={language}
                     onChange={handleLanguageChange}
                   />
-                  <Button variant="primary" onClick={refetch} loading={loading}>
-                    {currentTexts.refreshButton}
+                  <Button
+                    variant="primary"
+                    href="https://github.com/moritalous/whats-new-viewer"
+                    target="_blank"
+                    iconName="external"
+                    iconAlign="right"
+                  >
+                    GitHub
                   </Button>
                 </SpaceBetween>
               }
