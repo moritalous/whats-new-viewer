@@ -5,9 +5,11 @@ import {
   Link,
   TextFilter,
   Pagination,
+  SpaceBetween,
 } from '@cloudscape-design/components';
 import { RSSItem, RSSFeed, Language, LanguageTexts } from '../types';
 import { formatDate, stripHtml, truncateText } from '../utils/formatters';
+import { SocialShare } from './SocialShare';
 
 interface RSSTableProps {
   rssData: RSSFeed;
@@ -74,6 +76,22 @@ export const RSSTable = ({
       ),
       width: 150,
       minWidth: 130,
+    },
+    {
+      id: 'actions',
+      header: currentTexts.tableHeaders?.actions || 'Actions',
+      cell: (item: RSSItem) => (
+        <SpaceBetween direction="horizontal" size="xs">
+          <SocialShare 
+            title={item.title} 
+            url={item.link} 
+            description={stripHtml(item.contentSnippet || item.content)}
+            hashtags={['AWS', 'Cloud', language === 'ja' ? 'アマゾン' : 'Amazon']}
+          />
+        </SpaceBetween>
+      ),
+      width: 80,
+      minWidth: 80,
     },
   ];
 

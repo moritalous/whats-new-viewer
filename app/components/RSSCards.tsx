@@ -8,6 +8,7 @@ import {
 } from '@cloudscape-design/components';
 import { RSSItem, RSSFeed, Language, LanguageTexts } from '../types';
 import { formatDate, stripHtml, truncateText } from '../utils/formatters';
+import { SocialShare } from './SocialShare';
 
 interface RSSCardsProps {
   rssData: RSSFeed;
@@ -34,9 +35,17 @@ export const RSSCards = ({
 }: RSSCardsProps) => {
   const cardDefinition = {
     header: (item: RSSItem) => (
-      <Link external href={item.link} fontSize="heading-m">
-        {item.title}
-      </Link>
+      <SpaceBetween direction="horizontal" size="xs">
+        <Link external href={item.link} fontSize="heading-m">
+          {item.title}
+        </Link>
+        <SocialShare 
+          title={item.title} 
+          url={item.link} 
+          description={stripHtml(item.contentSnippet || item.content)}
+          hashtags={['AWS', 'Cloud', language === 'ja' ? 'アマゾン' : 'Amazon']}
+        />
+      </SpaceBetween>
     ),
     sections: [
       {
