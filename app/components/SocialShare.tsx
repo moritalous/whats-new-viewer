@@ -14,7 +14,50 @@ interface SocialShareProps {
 /**
  * SocialShare component for sharing content to various social media platforms
  */
+url: string;
+  description?: string;
+  hashtags?: string[];
+  via?: string;
+}
+
+// Utility function for URL encoding
+const encodeShareParams = (params: Partial<SocialShareProps>) => {
+  return Object.entries(params).reduce((acc, [key, value]) => {
+    acc[key] = encodeURIComponent(Array.isArray(value) ? value.join(',') : value || '');
+    return acc;
+  }, {} as Record<string, string>);
+};
+
+// Utility function for generating share URLs
+const generateShareUrls = (params: ReturnType<typeof encodeShareParams>) => {
+  const { url, title, description, hashtags, via } = params;
+  return {
+    twitter: `https://twitter.com/intent/tweet?url=${url}&text=${title}&hashtags=${hashtags}&via=${via}`,
+    facebook: `https://www.facebook.com/sharer/sharer.php?u=${url}`,
+    linkedin: `https://www.linkedin.com/sharing/share-offsite/?url=${url}`,
+    email: `mailto:?subject=${title}&body=${description}%0A%0A${url}`,
+  };
+};
+
+/**
+ * SocialShare component for sharing content to various social media platforms
+ */
 export const SocialShare = ({
+  title,
+  url,
+  description = '',
+  hashtags = ['AWS', 'Cloud'],
+  via = 'AWSCloud',
+}: SocialShareProps) => {
+  const [showShareModal, setShowShareModal] = useState(false);
+  const encodedParams = encodeShareParams({ title, url, description, hashtags, via });
+  const shareUrls = generateShareUrls(encodedParams);
+
+  // Function to handle share button click
+  const handleShare = (shareUrl: string) => {
+    window.open(shareUrl, '_blank', 'width=600,height=400');
+    setShowShareModal(false);
+  };
   title,
   url,
   description = '',
