@@ -40,7 +40,9 @@ export async function GET(request: Request) {
       title: feed.title || "AWS What's New",
       description:
         feed.description ||
-        (lang === 'ja' ? '最新のAWSアナウンス' : 'Latest AWS announcements'),
+        (lang === 'ja'
+          ? 'Latest AWS announcements'
+          : 'Latest AWS announcements'),
       link: feed.link || '',
       items: feed.items.map((item) => {
         // Log the original date format for debugging
@@ -61,9 +63,9 @@ export async function GET(request: Request) {
 
     return NextResponse.json(rssData);
   } catch (error) {
-    console.error('RSS取得エラー:', error);
+    console.error('RSS fetch error:', error);
     return NextResponse.json(
-      { error: 'RSSフィードの取得に失敗しました' },
+      { error: 'Failed to fetch RSS feed' },
       { status: 500 }
     );
   }
