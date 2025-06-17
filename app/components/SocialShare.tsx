@@ -40,7 +40,18 @@ export const SocialShare = ({
   };
 
   // Function to copy URL to clipboard
+// Function to copy URL to clipboard
   const copyToClipboard = () => {
+    try {
+      navigator.clipboard.writeText(url);
+      // You could add a toast notification here for success
+      console.log('URL copied to clipboard successfully');
+    } catch (err) {
+      console.error('Failed to copy URL: ', err);
+      // You could add a toast notification here for failure
+    }
+    setShowShareModal(false);
+  };
     navigator.clipboard.writeText(url);
     // You could add a toast notification here
     setShowShareModal(false);
