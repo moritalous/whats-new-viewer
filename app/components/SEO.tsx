@@ -38,7 +38,19 @@ export const SEO = ({
   const imageUrl = ogImage || `${baseUrl}/og-image.png`;
 
   // Default structured data for articles if not provided
-  const defaultStructuredData = structuredData || {
+const imageUrl = ogImage || `${baseUrl}/og-image.png`;
+
+  // Default structured data for articles if not provided
+  const defaultStructuredData = useMemo(() => structuredData || {
+    '@context': 'https://schema.org',
+    '@type': 'WebPage',
+    name: title,
+    description: description,
+    url: currentUrl,
+  }, [structuredData, title, description, currentUrl]);
+
+  return (
+    <Head>
     '@context': 'https://schema.org',
     '@type': 'WebPage',
     name: title,
