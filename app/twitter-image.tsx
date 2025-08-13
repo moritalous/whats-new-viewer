@@ -10,7 +10,7 @@ export const contentType = 'image/png';
 
 export default async function Image() {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000';
-  
+
   return new ImageResponse(
     (
       <div
@@ -178,7 +178,7 @@ export default async function Image() {
             border: '2px solid #ffffff',
           }}
         />
-        
+
         {/* Logo in bottom center - circular clipped, no border */}
         <div
           style={{

@@ -18,6 +18,8 @@ export const texts: Record<Language, LanguageTexts> = {
     filterAriaLabel: 'Search articles',
     disclaimerText:
       "This is an unofficial RSS reader for AWS What's New. Not affiliated with Amazon Web Services.",
+    shareButtonAriaLabel: 'Copy title and URL to clipboard',
+    copySuccess: 'Copied to clipboard',
     tableHeaders: {
       title: 'Title',
       description: 'Description',
@@ -41,6 +43,8 @@ export const texts: Record<Language, LanguageTexts> = {
     filterAriaLabel: '記事を検索',
     disclaimerText:
       "これはAWS What's Newの非公式RSSリーダーです。Amazon Web Servicesとは関係ありません。",
+    shareButtonAriaLabel: 'タイトルとURLをクリップボードにコピー',
+    copySuccess: 'コピーしました',
     tableHeaders: {
       title: 'タイトル',
       description: '概要',
