@@ -32,6 +32,8 @@ export interface LanguageTexts {
   filterPlaceholder: string;
   filterAriaLabel: string;
   disclaimerText: string;
+  shareButtonAriaLabel: string;
+  copySuccess: string;
   tableHeaders: {
     title: string;
     description: string;

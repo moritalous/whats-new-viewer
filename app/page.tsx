@@ -75,9 +75,9 @@ function HomeContent() {
               variant="h1"
               actions={
                 <SpaceBetween direction="horizontal" size="s">
-                  <Button 
-                    variant="normal" 
-                    onClick={refetch} 
+                  <Button
+                    variant="normal"
+                    onClick={refetch}
                     loading={loading}
                     iconName="refresh"
                     ariaLabel={currentTexts.refreshButton}
